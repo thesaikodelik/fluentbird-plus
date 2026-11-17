@@ -1,97 +1,153 @@
-# FluentBird
+<p align="center"><img src="installer/build/icon.png" width="96" alt=""></p>
+
+<h1 align="center">Fluentbird+</h1>
+<p align="center">A Windows 11 look for Thunderbird, plus handy add-ons, in one click.</p>
+<p align="center"><b>English</b> · <a href="README.fa.md">فارسی</a></p>
+
+<p align="center"><img src="docs/screenshots/thunderbird-light.png" width="900" alt="Thunderbird with Fluentbird+"></p>
+
+> **Built on [Fluentbird](https://github.com/Deathbyteacup/fluentbird) by Danny King.**
+> Fluentbird gives Thunderbird its Windows 11 Fluent Design and Mica look. That core design is
+> Danny's work. If you like it, please give [Fluentbird](https://github.com/Deathbyteacup/fluentbird) a star.
+
+## Fluentbird and Fluentbird+
+
+| | Fluentbird | Fluentbird+ adds |
+|---|---|---|
+| Design | Fluent Design, Mica, Fluent icons, rounded cards | Accent-colour highlights, grouped accounts, calm folder icons, unread dot, one-row message header |
+| Install | Copy files and change settings by hand | One installer, with a clean uninstall |
+| Add-ons | | 11 optional add-ons, ticked in the installer |
+| Updates | | Optional automatic updates |
+
+Fluentbird+ ships Fluentbird's files unchanged. Its own changes live in a separate
+[`custom.css`](custom.css), the file Fluentbird provides for personal tweaks.
+The original Fluentbird readme is kept in [docs/FLUENTBIRD.md](docs/FLUENTBIRD.md).
+
+
+## What you get
+
+- **Fluent design**: rounded cards, each account in its own group, calm icons, Mica transparency.
+- **Follows your accent colour**: change it in Windows Settings and Thunderbird follows.
+- **Clear unread mail**: a small accent dot and a bold sender.
+- **Tidy message header**: one row of icon buttons that stays put.
+- **Light and dark**: follows your Windows theme.
+- **Optional add-ons**: tick the ones you want and the installer does the rest.
+
+| Add-on | What it does |
+|---|---|
+| Auto Profile Picture | Sender pictures and logos next to emails |
+| Check and Send | Confirm recipients and account before sending |
+| DKIM Verifier | Shows if the sender's signature is valid |
+| Expression Search NG | Powerful search, like `f:name` or `has:attachment` |
+| Extract 'Em! | Save every attachment in a folder at once |
+| Mail Merge | Personalised emails to a list of people |
+| Quick Folder Move | File an email by typing part of a folder name |
+| quickFilters | Drag an email to a folder to create a filter |
+| Send Later | Write now, send at the time you choose |
+| Undo Send | A few seconds to cancel after Send |
+| XNote++ | Private sticky notes on emails |
+
+<p align="center"><img src="docs/screenshots/addons.png" width="760" alt="All add-ons switched on"></p>
+
+## The installer
 
 <p align="center">
-  <picture>
-    <source srcset="https://www.dannyking.co.uk/github/fluentbird-logo dark.png?cb=1" media="(prefers-color-scheme: dark)">
-    <source srcset="https://www.dannyking.co.uk/github/fluentbird-logo.png?cb=1" media="(prefers-color-scheme: light)">
-    <img src="https://www.dannyking.co.uk/github/fluentbird-logo.png" alt="FluentBird Logo" style="width:50%;">
-  </picture>
+  <img src="docs/screenshots/installer-welcome.png" width="440" alt="Welcome">
+  <img src="docs/screenshots/installer-addons.png" width="440" alt="Pick add-ons">
 </p>
-
-FluentBird is a userChrome.css theme for Mozilla Thunderbird, that implemenets Windows 11 Fluent Design and Mica transparency materials.
-
-Created by Danny King - www.dannyking.co.uk
-
-Released under the MIT License
-
 <p align="center">
-  <img src="https://www.dannyking.co.uk/github/fluentbird-preview.png" alt="FluentBird Screenshot" style="width:90%;">
+  <img src="docs/screenshots/installer-profile-dark.png" width="440" alt="Pick a profile, dark mode">
+  <img src="docs/screenshots/installer-done-dark.png" width="440" alt="Done, dark mode">
 </p>
 
----------------------------------------------------------------
+## Install
 
-Features
---------
-- Implements Fluent Design styling in Thunderbird
-- Supports both dark and light modes (system theme)
-- Enhances and highlights Mica transparency on Windows 11 systems
+1. Download `FluentbirdPlus-Setup.exe` from [Releases](../../releases/latest).
+2. Close Thunderbird.
+3. Run the installer, pick your profile and tick the add-ons you want.
+4. Open Thunderbird.
 
-There may be some bugs and issues, specifically when using operating systems other than Windows 11. 
-If reporting an issue, please use the report templates, including the OS and version you're using, the version of Thunderbird, and any specific settings related to the bug. 
-Thanks!
+Windows may show "Windows protected your PC" because the file is new and not code-signed.
+Click **More info → Run anyway**. Every release is built from this source code by
+[GitHub Actions](.github/workflows/release.yml), and a SHA-256 checksum is attached.
 
-1.2.0 Release Notes
---------
-- Fixed: removed the stray line between adjacent collapsed group headers (e.g. "Today" and "Past 7 days")
-- Fixed: extra padding no longer appears under the next group after collapsing one
-- Fixed: the group header card no longer grows taller than its 30px band and gets overlaid by other rows
-- Fixed: group headers are excluded from the "subject indent for rows with replies" rule, so a recycled row can no longer indent a header label
-- Fixed: unread senders names now appear bold on the mail card
-- Added: unread messages have a light blue background that persists across restarts and folder changes and clears when the message is read
-- Added: unread messages have a new left accent color
+Needs Windows 10 or 11 with the WebView2 Runtime (included in Windows 11). Without it, run
+`FluentbirdPlus-Setup.exe --console` for a text version. Mica transparency needs Windows 11.
 
-Credits
---------
-FluentBird uses Fluent Design icons provided by Microsoft, licensed under the MIT License. 
-Copyright (c) Microsoft Corporation.
+### About "full access" add-ons
 
+Six of the add-ons (Auto Profile Picture, Expression Search NG, Mail Merge, Quick Folder Move,
+Send Later, XNote++) use Thunderbird's Experiment APIs, which give an add-on full access.
+Thunderbird only accepts these through its official enterprise policy. So if you tick one:
 
----------------------------------------------------------------
+- Windows asks once for admin permission.
+- Thunderbird's settings show a "managed by your organization" line while they are installed. This is normal and goes away when you uninstall.
+- The add-ons may need a minute after Thunderbird first opens to switch on. If one says "incompatible", restart Thunderbird once.
 
-Setup Instructions
-------------------
+Mozilla plans to phase out Experiment add-ons over time. If an author stops updating one,
+it may stop working in a future Thunderbird.
 
-1. Enable userChrome.css
-   - Open Thunderbird  
-   - Go to **Settings** > **General**  
-   - Click **Config Editor…** under **Advanced**  
-   - Search for `toolkit.legacyUserProfileCustomizations.stylesheets`  
-   - Set it to `true`  
-   - Restart Thunderbird
+## Privacy and safety
 
-2. Enable the Mica flags in Thunderbird’s (Firefox-based) advanced configuration:  
-   - Open Thunderbird  
-   - Go to **Settings** > **General**  
-   - Scroll down and click **Config Editor…** under **Advanced**  
-   - In the search bar, type `widget.windows.mica` and set it to `true`  
-   - Search for `widget.windows.mica.popups` and set it to `2`
+- No telemetry, no accounts, no analytics.
+- It never opens your email, contacts or passwords. It reads `profiles.ini` to find your profile.
+- It only connects to `addons.thunderbird.net` for add-ons you tick, and to GitHub once a day if automatic updates are on.
+- Each download is checked against the SHA-256 checksum published by that site, and the add-on ID must match.
+- It runs as a normal user. Admin permission is only asked for the full-access add-ons, and only to add or remove Thunderbird's add-on install policy.
 
-3. Make sure no other theme is selected in Thunderbird settings.
-   *Do not* select Light, Dark, or any theme from the Thunderbird extension store.
-   The theme must be set to "System Theme" or simply unselected.
+### What it changes
 
-4. Copy the included files to the `chrome` folder in your Thunderbird profile directory:
-   - Click on Help > Troubleshooting information
-   - Scroll down to "Profile Folder" under "Application Basics" and click "Open Folder"
-   - Create a new folder named `chrome` inside your profile folder, if it does not already exist
-   - Place the userChrome.css file and all folders into the 'chrome' directory
-   
-5. Restart Thunderbird.
+| Where | Change |
+|---|---|
+| `<profile>\chrome\` | Theme files. Your own folder, if any, is moved to the backup first. |
+| `<profile>\user.js`, `prefs.js` | Theme settings. Earlier values are saved. |
+| `<profile>\extensions\` | Only the add-ons you pick. |
+| `<profile>\fluentbird-plus-backup\` | Everything needed to undo the install. Removed on uninstall. |
+| `HKCU\Software\Policies\Mozilla\Thunderbird\Extensions\Install` | Only for full-access add-ons. Removed on uninstall. |
+| `%LOCALAPPDATA%\FluentbirdPlus\` | Downloaded add-ons and the update log. Removed on uninstall. |
 
----------------------------------------------------------------
+## Automatic updates
 
-Known Issues
-------------
-- Untested on Mac and Linux (should work, but without Mica).
-- Report issues via the GitHub repository.
+On the add-ons step there is a **Keep Fluentbird+ up to date** switch.
 
-Also, note that some areas of ThunderBird are rendered outside of the influence of userChrome.css in a "Shadow DOM" - as such, it is not possible to fully theme all elements of Thunderbird.
+- Once a day a Windows scheduled task, **Fluentbird+ Update**, checks this repository's latest release.
+- If there is a newer version, it downloads it, checks it against the `.sha256` file from the release, and refreshes the theme. Your settings stay as they are.
+- It runs as you, with no admin rights. The log is in `%LOCALAPPDATA%\FluentbirdPlus\update.log`.
+- Turn it off by running the installer again with the switch off, or by uninstalling.
 
-- The mail section is fully themed, as is the general window chrome. The Contacts, Calendar, Tasks and Chat functions have limited themeing in some areas.
-- It isn't possible to style the new message / reply message window, or any other pop-up windows.
-- As they are entirely contained within a Shadow DOM, it is also not possible to theme the settings areas.
+## Uninstall
 
----------------------------------------------------------------
+Run the installer again and click **Uninstall**. Thunderbird goes back to how it was before:
 
-Questions?  
-Check the GitHub repo or open an issue there. Enjoy!
+- Theme files are removed, and your own `chrome` folder comes back if you had one.
+- `user.js` and the theme settings get their earlier values back, or Thunderbird's defaults.
+- You choose which add-ons to remove. The ones the installer added are ticked for you.
+- The add-on policy, the update task and `%LOCALAPPDATA%\FluentbirdPlus` are removed.
+
+If there is no record of the earlier state (for example, Fluentbird was set up by hand),
+everything goes back to Thunderbird's defaults.
+
+## Build it yourself
+
+```
+CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -trimpath \
+  -ldflags "-H windowsgui -X main.appVersion=1.4.3 -X main.updateRepo=OWNER/fluentbird-plus" \
+  -o FluentbirdPlus-Setup.exe ./installer
+```
+
+Without `updateRepo`, the automatic update switch is hidden. To publish a release,
+push a tag like `v1.4.3`. GitHub Actions builds the installer and attaches it with its checksum.
+
+| Path | What it is |
+|---|---|
+| `userChrome.css`, `Icons/`, `Titlebar_Icons/` | Fluentbird, unchanged |
+| `custom.css` | The Fluentbird+ design layer |
+| `installer/` | The Windows installer (Go + WebView2) |
+| `installer/ui/index.html` | The installer's interface |
+
+## Credits
+
+- **Theme:** [Fluentbird](https://github.com/Deathbyteacup/fluentbird) by Danny King, MIT licence. Fluentbird+ would not exist without it.
+- **Icons:** Fluent UI System Icons by Microsoft, MIT licence.
+- **Add-ons:** each belongs to its author. Fluentbird+ only downloads them from addons.thunderbird.net when you ask.
+- Full licence texts: [LICENSE](LICENSE) and [NOTICE.md](NOTICE.md).
